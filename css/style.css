@@ -27,6 +27,35 @@ visibility: hidden;
 }
 
 footer {
-    margin-top: 200px;
-    bottom: 30px;
+    position: absolute;
+    bottom: 15px;
+    left:45%;
+}
+
+.game-indicators {
+    margin: auto;
+    width: 40%;
+    justify-content: space-around;
+    display: flex;  
+    font-size: 25px;  
+}
+
+button {
+    height: 40px;
+    width: 100px;
+    margin: 5px;
+    background-color: yellow;
+    border: black solid 2px;
+    border-radius: 7px;
+    font-size: 18px;
+    opacity: 0.8;
+    transition: opacity,border-radius, 0.3s;
+}
+
+.btn {
+    background-color: lightseagreen;
+}
+
+button:hover {
+    opacity:1;
 }
