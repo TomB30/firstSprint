@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Righteous&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Righteous&display=swap" rel="stylesheet">
     <title>MineSweeper by Tom Bechar</title>
 </head>
 
@@ -33,6 +33,12 @@
         <button class="btn" onclick="initGame(12,30)">Hard</button>
     </div>
     <div class="timer">00:00:00</div>
+    <div style="position: absolute; left:50%" class="best-scores-wrapper">
+        <div class="best-scores" style="position: relative; left: -50%;">Easy Best Time:<span class="easy-best"></span>
+            <hr>Medium Best Time:<span class="medium-best"></span>
+            <hr> Hard Best Time:<span class="hard-best"></span>
+        </div>
+    </div>
     <table border="10" cell-margin="20px">
         <tbody></tbody>
     </table>

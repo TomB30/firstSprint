@@ -5,6 +5,7 @@
 
 body {
     text-align: center;
+    background-color: darkgray;
 }
 
 h1 {
@@ -117,4 +118,12 @@ button:hover{
 
 .smiley:hover {
     transform: rotate(360deg)   
+}
+
+.best-scores {
+    text-align: left;
+    padding: 15px;
+    width: fit-content;
+    border: black solid 1px;
+    background-color: rgb(62, 211, 196 , 0.9);
 }

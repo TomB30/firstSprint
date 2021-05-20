@@ -9,6 +9,10 @@ var gSeconds = 0;
 var gMiliseconds = 0;
 var gTimeInterval = null;
 
+localStorage.setItem('Hard', Infinity);
+localStorage.setItem('Medium',Infinity);
+localStorage.setItem('Easy', Infinity);
+
 function print() {
     var minutesPrint = (gMinutes < 10) ? '0' + gMinutes : gMinutes;
     var secondsPrint = (gSeconds < 10) ? '0' + gSeconds : gSeconds;
@@ -20,6 +24,7 @@ function startTime() {
     if (gMiliseconds > 99) {
         gMiliseconds = 0;
         gSeconds++;
+        gGame.secsPassed++;
     }
     if (gSeconds > 59) {
         gSeconds = 0;

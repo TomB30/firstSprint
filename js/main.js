@@ -36,6 +36,7 @@ function setGame() {
         secsPassed: 0
     }
     closeModal();
+    document.querySelector('.best-scores').style.display = 'none';
     document.querySelector('table').style.backgroundColor = '';
     document.querySelector('#lives-indic').style.backgroundColor = '';
     document.querySelector('.smiley').innerText = '😄';
@@ -43,7 +44,7 @@ function setGame() {
     document.querySelector('#hints-indic span').innerText = gSafeClicks;
     document.querySelector('#hints-indic').style.backgroundColor = '';
     var elBtns = document.querySelectorAll('.hint-btn');
-    for(var i = 0 ; i < elBtns.length ; i++){
+    for (var i = 0; i < elBtns.length; i++) {
         elBtns[i].disabled = false;
         elBtns[i].style.backgroundColor = '';
     }
@@ -86,7 +87,7 @@ function renderBoard(board) {
             if (board[i][j].isMine) {
                 isBomb = '🧨';
             } else {
-                ;
+
                 isBomb = board[i][j].minesAroundCount;
             }
             strHTML += `<td id="cell-${i}-${j}"  onclick="cellClicked(this , ${i},${j})" oncontextmenu="cellMarked(this , ${i},${j})"><span class="${isCovered}">${isBomb}</span></td>`;
@@ -107,11 +108,11 @@ function cellClicked(elCell, row, col) {
     if (gBoard[row][col].isMarked) return;
     if (gBoard[row][col].isShown) return;
 
-    if(gIsHintClick){
-        revealNegs(row,col,gBoard,false);
-        setTimeout(function(){
-            revealNegs(row,col,gBoard,true);
-        },1000)
+    if (gIsHintClick) {
+        revealNegs(row, col, gBoard, false);
+        setTimeout(function () {
+            revealNegs(row, col, gBoard, true);
+        }, 1000)
         gIsHintClick = false;
         return;
     }
@@ -138,7 +139,7 @@ function cellClicked(elCell, row, col) {
         }
         gBoard = setMinesNegsCount(gBoard);
         renderBoard(gBoard)
-        document.querySelector('#'+elCell.id).classList.add('shown')
+        document.querySelector('#' + elCell.id).classList.add('shown')
     }
 
 
@@ -184,9 +185,9 @@ function cellClicked(elCell, row, col) {
 
 function cellMarked(elCell, i, j) {
     if (gGameOver === true) return;
-    if(gIsFirstTurn){
-        openModal('Flags Can not be used at first turn',false,false);
-        setTimeout(closeModal,2000);
+    if (gIsFirstTurn) {
+        openModal('Flags Can not be used at first turn', false, false);
+        setTimeout(closeModal, 2000);
         return;
     }
     if (gTimeInterval === null) {
@@ -194,7 +195,7 @@ function cellMarked(elCell, i, j) {
     }
 
     if (gBoard[i][j].isShown) return;
-    
+
     if (!gBoard[i][j].isMarked) {
         if (gGame.markedCount >= gLevel.MINES) {
             openModal('You are out of flags', true);
@@ -224,6 +225,29 @@ function checkGameOver() {
         gGameOver = true;
         openModal('You Won!', true, true);
         FINISH_GAME_SOUND.play();
+        var currTime = gGame.secsPassed;
+        document.querySelector('.best-scores').style.display = 'block';
+        switch (gLevel.SIZE) {
+            case 4:
+                if (currTime < localStorage.getItem('Easy')) {
+                    localStorage.setItem('Easy', currTime);
+                    document.querySelector('.easy-best').innerText = document.querySelector('.timer').innerText;
+                }
+
+                break;
+            case 8:
+                if (currTime < localStorage.getItem('Medium')) {
+                    localStorage.setItem('Medium', currTime);
+                    document.querySelector('.medium-best').innerText = document.querySelector('.timer').innerText;
+                }
+                break;
+            case 12:
+                if (currTime < localStorage.getItem('Hard')) {
+                    localStorage.setItem('Hard', currTime);
+                    document.querySelector('.hard-best').innerText = document.querySelector('.timer').innerText;
+                }
+                break;
+        }
     }
 }
 
@@ -239,15 +263,15 @@ function gameOver() {
 
 // BONUS - Hints
 function useHint(elBtn) {
-    if (gIsFirstTurn){
-        openModal('Hints are not allowed at first click!',false,false)
-        setTimeout(closeModal,2000)
+    if (gIsFirstTurn) {
+        openModal('Hints are not allowed at first click!', false, false)
+        setTimeout(closeModal, 2000)
         return
     }
     if (elBtn.disabled) return;
     if (!gIsHintClick) {
         gIsHintClick = true;
-    } else{
+    } else {
         return;
     }
     elBtn.disabled = true;
