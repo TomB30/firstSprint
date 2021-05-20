@@ -118,6 +118,7 @@ function cellClicked(elCell, row, col) {
 
     gBoard[row][col].isShown = true;
     gGame.shownCount++;
+    document.querySelector('#' + elCell.id).classList.add('shown');
     document.querySelector('#' + elCell.id + ' span').classList.remove('covered');
 
     if (gIsFirstTurn) {
@@ -137,12 +138,13 @@ function cellClicked(elCell, row, col) {
         }
         gBoard = setMinesNegsCount(gBoard);
         renderBoard(gBoard)
+        document.querySelector('#'+elCell.id).classList.add('shown')
     }
 
 
 
 
-    if (gBoard[row][col].minesAroundCount === 0) {
+    if (gBoard[row][col].minesAroundCount === ' ') {
         expandShown(gBoard, row, col);
         SAFE_CLICK_SOUND.play();
     } else if (!gBoard[row][col].isMine) {
@@ -182,6 +184,11 @@ function cellClicked(elCell, row, col) {
 
 function cellMarked(elCell, i, j) {
     if (gGameOver === true) return;
+    if(gIsFirstTurn){
+        openModal('Flags Can not be used at first turn',false,false);
+        setTimeout(closeModal,2000);
+        return;
+    }
     if (gTimeInterval === null) {
         gTimeInterval = setInterval(startTime, 10);
     }
@@ -298,8 +305,9 @@ function expandShown(mat, cellI, cellJ) {
                 mat[i][j].isShown = true;
                 gGame.shownCount++;
                 document.querySelector(`#cell-${i}-${j} span`).classList.remove('covered')
+                document.querySelector(`#cell-${i}-${j}`).classList.add('shown')
             }
-            if (mat[i][j].minesAroundCount === 0) expandShown(mat, i, j)
+            if (mat[i][j].minesAroundCount === ' ') expandShown(mat, i, j)
         }
     }
 }

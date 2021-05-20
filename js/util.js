@@ -25,7 +25,7 @@ function startTime() {
         gSeconds = 0;
         gMinutes++;
     }
-    
+
     print();
 }
 function stopTime() {
@@ -51,6 +51,7 @@ function countMineNegs(cellI, cellJ, mat) {
             if (mat[i][j].isMine) mineNegs++;
         }
     }
+    if (mineNegs === 0) mineNegs = ' ';
     return mineNegs;
 }
 
@@ -60,17 +61,20 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function revealNegs(cellI,cellJ,mat,toCover){
+function revealNegs(cellI, cellJ, mat, toCover) {
+    var ShownCells = [];
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= mat.length) continue;
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
             if (j < 0 || j >= mat[i].length) continue;
             mat[i][j].isShown = (toCover) ? false : true;
-            if(toCover){
-                document.querySelector(`#cell-${i}-${j} span`).classList.add('covered')
-            }else{
-                document.querySelector(`#cell-${i}-${j} span`).classList.remove('covered')
+            if (!document.querySelector(`#cell-${i}-${j}`).classList.contains('shown') && !mat[i][j].isMarked) {
+                if (toCover) {
+                    document.querySelector(`#cell-${i}-${j} span`).classList.add('covered')
+                } else {
+                    document.querySelector(`#cell-${i}-${j} span`).classList.remove('covered')
 
+                }
             }
         }
     }
