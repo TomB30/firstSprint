@@ -9,7 +9,6 @@ var gSafeClicks;
 var gIsHintClick;
 var gIsFirstTurn;
 var gGameOver;
-var gGameBoards;
 
 function initGame(boardSize, minesAmount) {
     gLevel = {
@@ -24,7 +23,6 @@ function initGame(boardSize, minesAmount) {
 // setting all the global variables ready for a new game.
 function setGame() {
     resetTime();
-    gGameBoards = [];
     gIsHintClick = false;
     gGameOver = false;
     gIsFirstTurn = true;
@@ -363,3 +361,4 @@ function undoTurn(){
     gSafeClicks = prevTurn.safeClicks;
     renderBoard(gBoard)
 }
+    

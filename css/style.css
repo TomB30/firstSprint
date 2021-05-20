@@ -1,5 +1,4 @@
 *{
-    margin-top: 5px;
     font-family: 'PT mono';
 }
 
@@ -9,9 +8,9 @@ body {
 }
 
 h1 {
-    margin-top: 5px;
+    margin-top: 0;
     font-family:'righteous' ;
-    font-size: 50px;
+    font-size: 40px;
     margin-bottom: 10px;
 }
 
@@ -47,7 +46,6 @@ footer {
 
 .game-indicators {
     margin: auto;
-    margin-top: 5px;
     width: 40%;
     height: 35px;
     justify-content: space-around;
@@ -55,10 +53,19 @@ footer {
     font-size: 18px;  
 }
 
+.indicator{
+    padding: 5px;
+    width: 160px;
+    border-radius: 7px;
+    border: black solid 1px;
+    background-color:powderblue;
+    transition: all 1s;
+}
+
 button {
     height: fit-content;
     width: 150px;
-    margin: 5px;
+    margin: 3px;
     background-color: yellow;
     border: black solid 2px;
     border-radius: 7px;
@@ -66,7 +73,7 @@ button {
 }
 
 .sound-btn {
-    position: absolute;
+    position: fixed;
     top:5px;
     right: 5px;
     height: fit-content;
@@ -88,28 +95,14 @@ button:hover{
     color: yellow;
 }
 
-.indicator{
-    margin-top: 5px;
-    padding: 5px;
-    width: 160px;
-    border-radius: 7px;
-    border: black solid 1px;
-    background-color:powderblue;
-    transition: all 1s;
-}
-
 .modal {
-    position: fixed;
-    top:100px;
-    left: 15%;
     padding: 10px;
     display: none;
+    width: 235px;
     height: fit-content;
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 7px;
-    border: black solid 2px;
+    border: black solid 1px;
+    opacity: 0.9;
+    top: 200px;
 }
 
 .play-again-msg {

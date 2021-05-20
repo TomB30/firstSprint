@@ -11,7 +11,7 @@
 </head>
 
 <body onload="initGame(4,2)">
-    <h1>MineSweeper</h1>
+    <h1>🧨MineSweeper🧨</h1>
     <div class="game-indicators">
         <div id="lives-indic" class="indicator">
             Lives: <span class="lives">3</span>
@@ -40,16 +40,18 @@
             <hr> Hard Best Time:<span class="hard-best"></span>
         </div>
     </div>
+    <div style="position: absolute; left: 50%;">
+        <div class="modal" style="position: relative; left: -50%;">
+            <div class="modal-msg">
+            </div>
+            <div class="play-again-msg">
+                To play again click on the smiley or choose a game level.
+            </div>
+        </div>
+    </div>
     <table border="10" cell-margin="20px">
         <tbody></tbody>
     </table>
-    <div class="modal">
-        <div class="modal-msg">
-        </div>
-        <div class="play-again-msg">
-            To play again click on the smiley or choose a game level.
-        </div>
-    </div>
 
 
     <footer>MineSweeper By Tom Bechar 🏄‍♂️</footer>
