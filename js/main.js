@@ -147,9 +147,9 @@ function cellClicked(elCell, row, col) {
 
     if (gBoard[row][col].minesAroundCount === ' ') {
         expandShown(gBoard, row, col);
-        SAFE_CLICK_SOUND.play();
+        if(isSoundOn) SAFE_CLICK_SOUND.play();
     } else if (!gBoard[row][col].isMine) {
-        SAFE_CLICK_SOUND.play();
+        if(isSoundOn) SAFE_CLICK_SOUND.play();
     }
 
     if (gBoard[row][col].isMine) {
@@ -178,7 +178,7 @@ function cellClicked(elCell, row, col) {
                 gGameOver = false;
             }, 500)
         }
-        MINE_CLICK_SOUND.play();
+        if(isSoundOn) MINE_CLICK_SOUND.play();
     }
     checkGameOver();
 }
@@ -224,7 +224,7 @@ function checkGameOver() {
         document.querySelector('.smiley').innerText = '😎';
         gGameOver = true;
         openModal('You Won!', true, true);
-        FINISH_GAME_SOUND.play();
+        if(isSoundOn) FINISH_GAME_SOUND.play();
         var currTime = gGame.secsPassed;
         document.querySelector('.best-scores').style.display = 'block';
         switch (gLevel.SIZE) {

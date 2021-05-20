@@ -1,5 +1,7 @@
 'use strict';
 window.addEventListener("contextmenu", e => e.preventDefault());
+
+var isSoundOn = true;
 var SAFE_CLICK_SOUND = new Audio('./sound/safeClick.mp3');
 var MINE_CLICK_SOUND = new Audio('./sound/mineClick.mp3');
 var FINISH_GAME_SOUND = new Audio('./sound/finishGame.mp3')
@@ -10,7 +12,7 @@ var gMiliseconds = 0;
 var gTimeInterval = null;
 
 localStorage.setItem('Hard', Infinity);
-localStorage.setItem('Medium',Infinity);
+localStorage.setItem('Medium', Infinity);
 localStorage.setItem('Easy', Infinity);
 
 function print() {
@@ -82,5 +84,16 @@ function revealNegs(cellI, cellJ, mat, toCover) {
                 }
             }
         }
+    }
+}
+
+function soundToggle(elBtn) {
+    if (isSoundOn) {
+        isSoundOn = false;
+        elBtn.innerText = '🔈'
+    }
+    else {
+        isSoundOn = true;
+        elBtn.innerText = '🔊'
     }
 }
