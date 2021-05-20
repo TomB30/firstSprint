@@ -1,8 +1,8 @@
 'use strict';
 window.addEventListener("contextmenu", e => e.preventDefault());
-var SAFE_CLICK_SOUND = new Audio('/sound/safeClick.mp3');
-var MINE_CLICK_SOUND = new Audio('/sound/mineClick.mp3');
-var FINISH_GAME_SOUND = new Audio('/sound/finishGame.mp3')
+var SAFE_CLICK_SOUND = new Audio('./sound/safeClick.mp3');
+var MINE_CLICK_SOUND = new Audio('./sound/mineClick.mp3');
+var FINISH_GAME_SOUND = new Audio('./sound/finishGame.mp3')
 
 var gMinutes = 0;
 var gSeconds = 0;
