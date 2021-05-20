@@ -1,20 +1,25 @@
 'use strict';
 window.addEventListener("contextmenu", e => e.preventDefault());
 
+//importing all the sounds for the game and setting if the sound is on.
 var isSoundOn = true;
 var SAFE_CLICK_SOUND = new Audio('./sound/safeClick.mp3');
 var MINE_CLICK_SOUND = new Audio('./sound/mineClick.mp3');
 var FINISH_GAME_SOUND = new Audio('./sound/finishGame.mp3')
 
+//setting the default time start.
 var gMinutes = 0;
 var gSeconds = 0;
 var gMiliseconds = 0;
 var gTimeInterval = null;
 
+//setting keys in local storage.
 localStorage.setItem('Hard', Infinity);
 localStorage.setItem('Medium', Infinity);
 localStorage.setItem('Easy', Infinity);
 
+
+//takes the time and makes it a string for the user.
 function print() {
     var minutesPrint = (gMinutes < 10) ? '0' + gMinutes : gMinutes;
     var secondsPrint = (gSeconds < 10) ? '0' + gSeconds : gSeconds;
@@ -23,10 +28,10 @@ function print() {
 }
 function startTime() {
     gMiliseconds++;
+    gGame.milisecsPassed++;
     if (gMiliseconds > 99) {
-        gMiliseconds = 0;
         gSeconds++;
-        gGame.secsPassed++;
+        gMiliseconds = 0;
     }
     if (gSeconds > 59) {
         gSeconds = 0;
@@ -48,6 +53,7 @@ function resetTime() {
     print();
 }
 
+//counting how many mines are negs of provided cell.
 function countMineNegs(cellI, cellJ, mat) {
     var mineNegs = 0;
     for (var i = cellI - 1; i <= cellI + 1; i++) {
@@ -68,8 +74,8 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+// reveals or unreveals negs .(for hint clicks).
 function revealNegs(cellI, cellJ, mat, toCover) {
-    var ShownCells = [];
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= mat.length) continue;
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
@@ -87,6 +93,7 @@ function revealNegs(cellI, cellJ, mat, toCover) {
     }
 }
 
+// mute/unmute sound.
 function soundToggle(elBtn) {
     if (isSoundOn) {
         isSoundOn = false;

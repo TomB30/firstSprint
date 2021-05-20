@@ -26,6 +26,7 @@ td {
     width: 40px;
     text-align: center;
     transition: all 0.4s;
+    background-color: white;
 }
 
 td:hover {
@@ -48,6 +49,7 @@ footer {
     margin: auto;
     margin-top: 5px;
     width: 40%;
+    height: 35px;
     justify-content: space-around;
     display: flex;  
     font-size: 18px;  
@@ -61,8 +63,6 @@ button {
     border: black solid 2px;
     border-radius: 7px;
     font-size: 18px;
-    opacity: 0.8;
-    transition: opacity,border-radius, 0.3s;
 }
 
 .sound-btn {
@@ -75,7 +75,7 @@ button {
 }
 
 .btn {
-    background-color: lightseagreen;
+    background-color: turquoise;
 }
 
 .btn:hover {
@@ -94,7 +94,7 @@ button:hover{
     width: 160px;
     border-radius: 7px;
     border: black solid 1px;
-    background-color: yellow;
+    background-color:powderblue;
     transition: all 1s;
 }
 
