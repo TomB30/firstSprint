@@ -41,7 +41,7 @@ function setGame() {
     document.querySelector('#lives-indic').style.backgroundColor = '';
     document.querySelector('.smiley').innerText = '😄';
     document.querySelector('.lives').innerText = gLives;
-    document.querySelector('#safe-clicks-indic span').innerText = gSafeClicks;
+    document.querySelector('.safe-clicks').innerText = gSafeClicks;
     document.querySelector('#safe-clicks-indic').style.backgroundColor = '';
     var elBtns = document.querySelectorAll('.hint-btn');
     for (var i = 0; i < elBtns.length; i++) {
