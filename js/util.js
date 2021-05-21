@@ -81,7 +81,7 @@ function revealNegs(cellI, cellJ, mat, toCover) {
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
             if (j < 0 || j >= mat[i].length) continue;
             if (!document.querySelector(`#cell-${i}-${j}`).classList.contains('shown') && !mat[i][j].isMarked) {
-                mat[i][j].isShown = (toCover) ? false : true;
+                mat[i][j].isShown = (!toCover) ? true : false;
                 if (toCover) {
                     document.querySelector(`#cell-${i}-${j} span`).classList.add('covered')
                 } else {

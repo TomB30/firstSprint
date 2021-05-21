@@ -19,7 +19,7 @@ function initGame(boardSize, minesAmount) {
     gBoard = buildBoard(boardSize, minesAmount)
     renderBoard(gBoard)
 }
- 
+
 // setting all the global variables ready for a new game.
 function setGame() {
     resetTime();
@@ -98,7 +98,7 @@ function renderBoard(board) {
 }
 // operates every time the player clicks on a cell.
 function cellClicked(elCell, row, col) {
-    
+
     if (gGameOver === true) return;                        //if game over. return.
 
     if (gTimeInterval === null) {                          //starting time count if not counting yet.
@@ -107,7 +107,7 @@ function cellClicked(elCell, row, col) {
 
     if (gBoard[row][col].isMarked) return;                 //if cell is marked , can not be clicked.
     if (gBoard[row][col].isShown) return;                  //if cell already revealed , can not be clicked.
-    
+
     if (gIsHintClick) {                                    //if current click is a hint.
         revealNegs(row, col, gBoard, false);
         setTimeout(function () {
@@ -145,15 +145,15 @@ function cellClicked(elCell, row, col) {
         renderBoard(gBoard)
         document.querySelector('#' + elCell.id).classList.add('shown')
     }
-    
-    
-    
+
+
+
     //checking if it's a cell without any mines around and calling a recursive function.
     if (gBoard[row][col].minesAroundCount === ' ') {
         expandShown(gBoard, row, col);
-        if(isSoundOn) SAFE_CLICK_SOUND.play();
+        if (isSoundOn) SAFE_CLICK_SOUND.play();
     } else if (!gBoard[row][col].isMine) {
-        if(isSoundOn) SAFE_CLICK_SOUND.play();
+        if (isSoundOn) SAFE_CLICK_SOUND.play();
     }
     //checking if it's a cell with a mine.
     if (gBoard[row][col].isMine) {
@@ -182,7 +182,7 @@ function cellClicked(elCell, row, col) {
                 gGameOver = false;
             }, 500)
         }
-        if(isSoundOn) MINE_CLICK_SOUND.play();
+        if (isSoundOn) MINE_CLICK_SOUND.play();
     }
     //checking if the game is over.
     checkGameOver();
@@ -227,9 +227,10 @@ function checkGameOver() {
         document.querySelector('.smiley').innerText = '😎';
         gGameOver = true;
         openModal('You Won!', true, true);
-        if(isSoundOn) FINISH_GAME_SOUND.play();
+        if (isSoundOn) FINISH_GAME_SOUND.play();
         var currTime = gGame.milisecsPassed;
         document.querySelector('.best-scores').style.display = 'block';
+        document.querySelector('.curr-time').innerText = document.querySelector('.timer').innerText;
         // BONUS - Best Scores.
         // saving best score on local storage , and showing the player the best scores.
         switch (gLevel.SIZE) {
@@ -331,6 +332,11 @@ function expandShown(mat, cellI, cellJ) {
             if (mat[i][j].isShown === false) {
                 mat[i][j].isShown = true;
                 gGame.shownCount++;
+                if (mat[i][j].isMarked) {
+                    mat[i][j].isMarked = false;
+                    gGame.markedCount--;
+                    document.querySelector(`#cell-${i}-${j} span`).innerText = (gBoard[i][j].isMine) ? '🧨' : gBoard[i][j].minesAroundCount;
+                }
                 document.querySelector(`#cell-${i}-${j} span`).classList.remove('covered')
                 document.querySelector(`#cell-${i}-${j}`).classList.add('shown')
             }
@@ -354,11 +360,10 @@ function closeModal() {
     document.querySelector('.play-again-msg').style.display = 'none';
 }
 
-function undoTurn(){
+function undoTurn() {
     var prevTurn = gGameBoards.pop();
     gBoard = prevTurn.board;
     gLives = prevTurn.lives;
     gSafeClicks = prevTurn.safeClicks;
     renderBoard(gBoard)
 }
-    

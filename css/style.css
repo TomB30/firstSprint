@@ -14,9 +14,27 @@ h1 {
     margin-bottom: 10px;
 }
 
-table{
+.main-wrapper{
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hint-btn-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.level-btn-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+table{
+    margin: 20px;
     transition: all 0.5s;
 }
 
@@ -56,19 +74,20 @@ footer {
 .indicator{
     padding: 5px;
     width: 160px;
-    border-radius: 7px;
+    height: fit-content;
     border: black solid 1px;
     background-color:powderblue;
     transition: all 1s;
 }
 
 button {
+    position: relative;
     height: fit-content;
     width: 150px;
     margin: 3px;
+    margin-top: 10px;
     background-color: yellow;
     border: black solid 2px;
-    border-radius: 7px;
     font-size: 18px;
 }
 
@@ -95,6 +114,10 @@ button:hover{
     color: yellow;
 }
 
+.modal-wrapper {
+    top:600px
+}
+
 .modal {
     padding: 10px;
     display: none;
@@ -102,7 +125,7 @@ button:hover{
     height: fit-content;
     border: black solid 1px;
     opacity: 0.9;
-    top: 200px;
+    /* top: 100px; */
 }
 
 .play-again-msg {
@@ -120,6 +143,10 @@ button:hover{
 
 .smiley:hover {
     transform: rotate(360deg)   
+}
+
+.best-scores-wrapper {
+    top: 400px;
 }
 
 .best-scores {
