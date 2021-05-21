@@ -41,8 +41,8 @@ function setGame() {
     document.querySelector('#lives-indic').style.backgroundColor = '';
     document.querySelector('.smiley').innerText = '😄';
     document.querySelector('.lives').innerText = gLives;
-    document.querySelector('#hints-indic span').innerText = gSafeClicks;
-    document.querySelector('#hints-indic').style.backgroundColor = '';
+    document.querySelector('#safe-clicks-indic span').innerText = gSafeClicks;
+    document.querySelector('#safe-clicks-indic').style.backgroundColor = '';
     var elBtns = document.querySelectorAll('.hint-btn');
     for (var i = 0; i < elBtns.length; i++) {
         elBtns[i].disabled = false;
@@ -292,16 +292,16 @@ function useSafeClick() {
         return;
     }
     gSafeClicks--;
-    document.querySelector('#hints-indic span').innerText = gSafeClicks;
+    document.querySelector('#safe-clicks-indic span').innerText = gSafeClicks;
     switch (gSafeClicks) {
         case 3:
-            document.querySelector('#hints-indic').style.backgroundColor = 'yellow';
+            document.querySelector('#safe-clicks-indic').style.backgroundColor = 'yellow';
             break;
         case 2:
-            document.querySelector('#hints-indic').style.backgroundColor = 'orange';
+            document.querySelector('#safe-clicks-indic').style.backgroundColor = 'orange';
             break;
         case 1:
-            document.querySelector('#hints-indic').style.backgroundColor = 'red';
+            document.querySelector('#safe-clicks-indic').style.backgroundColor = 'red';
             break;
     }
     var randomI = getRandomInt(0, gBoard.length - 1)

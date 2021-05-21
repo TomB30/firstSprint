@@ -11,33 +11,52 @@
 </head>
 
 <body onload="initGame(4,2)">
-    <h1>🧨MineSweeper🧨</h1>
-    <div class="game-indicators">
-        <div id="lives-indic" class="indicator">
-            Lives: <span class="lives">3</span>
-        </div>
-        <div class="smiley" onclick="initGame(4,2)">😄</div>
-        <div id="hints-indic" class="indicator">
-            Safe Clicks: <span class="hints">3</span>
-        </div>
-    </div>
-    <div><button onclick="useSafeClick()">Safe Click!</button></div>
     <div class="main-wrapper">
         <div class="hint-btn-wrapper">
             <h2>Hints</h2>
             <button class="hint-btn" onclick="useHint(this)">💡</button>
             <button class="hint-btn" onclick="useHint(this)">💡</button>
             <button class="hint-btn" onclick="useHint(this)">💡</button>
+            <!-- <button onclick="useSafeClick()">Safe Click!</button> -->
         </div>
-        <table border="10" cell-margin="20px">
-            <tbody></tbody>
-        </table>
+        <div class="mid-wrapper">
+            <h1>MineSweeper</h1>
+            <div class="game-indicators">
+                <div id="lives-indic" class="indicator">
+                    Lives: <span class="lives">3</span>
+                </div>
+                <!-- <div id="hints-indic" class="indicator">
+                    Safe Clicks: <span class="hints">3</span>
+                </div> -->
+                <button id="safe-clicks-indic" class="indicator" onclick="useSafeClick()">Safe Clicks: <span class="safe-clicks">3</span></button>
+                <div class="smiley" onclick="initGame(4,2)">😄</div>
+            </div>
+        </div>
         <div class="level-btn-wrapper">
             <h2>Levels</h2>
             <button class="btn" onclick="initGame(4,2)">Easy</button>
             <button class="btn" onclick="initGame(8,12)">Medium</button>
             <button class="btn" onclick="initGame(12,30)">Hard</button>
         </div>
+    </div>
+    <!-- <div><button onclick="useSafeClick()">Safe Click!</button></div> -->
+    <div class="main-wrapper">
+        <!-- <div class="hint-btn-wrapper">
+            <h2>Hints</h2>
+            <button class="hint-btn" onclick="useHint(this)">💡</button>
+            <button class="hint-btn" onclick="useHint(this)">💡</button>
+            <button class="hint-btn" onclick="useHint(this)">💡</button>
+            <button onclick="useSafeClick()">Safe Click!</button>
+        </div> -->
+        <table border="10" cell-margin="20px">
+            <tbody></tbody>
+        </table>
+        <!-- <div class="level-btn-wrapper">
+            <h2>Levels</h2>
+            <button class="btn" onclick="initGame(4,2)">Easy</button>
+            <button class="btn" onclick="initGame(8,12)">Medium</button>
+            <button class="btn" onclick="initGame(12,30)">Hard</button>
+        </div> -->
     </div>
     <button onclick="soundToggle(this)" class="sound-btn">🔊</button>
     <div class="timer">00:00:00</div>
