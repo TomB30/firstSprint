@@ -163,9 +163,9 @@ button:hover{
         width: 500px;
         height: fit-content;
         border: black solid 1px;
-        opacity: 0.9;
+        opacity: 0.99;
         border-radius: 7px;
-        font-size: 17px;
+        font-size: 19px;
 }
 
 .play-again-msg {
