@@ -104,3 +104,12 @@ function soundToggle(elBtn) {
         elBtn.innerText = '🔊'
     }
 }
+
+function instructionToggle(){
+    var elModal = document.querySelector('.instruction-modal-wrapper');
+    if (elModal.style.display === 'block'){
+        elModal.style.display = 'none';
+    }else{
+        elModal.style.display = 'block';
+    }
+}

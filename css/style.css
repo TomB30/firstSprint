@@ -113,6 +113,15 @@ button {
     background-color: white;
 }
 
+.instruction-btn{
+    position: fixed;
+    top:5px;
+    right: 50px;
+    height: fit-content;
+    width: fit-content;
+    background-color: white;
+}
+
 .btn {
     height: 29px;
     background-color: turquoise;
@@ -149,6 +158,34 @@ button:hover{
     border: black solid 1px;
     opacity: 0.9;
     border-radius: 7px;
+}
+
+.instruction-modal-wrapper{
+    top: 100px;
+    display: none;
+}
+
+.x-btn {
+    border: black solid 1px;
+    border-radius: 7px;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    background-color: white;
+    float: right;
+}
+
+.instruction-modal {
+    background-color: rgb(64, 218, 202,0.95);
+    text-align: left;
+        padding: 10px;
+        /* display: none; */
+        width: 500px;
+        height: fit-content;
+        border: black solid 1px;
+        opacity: 0.9;
+        border-radius: 7px;
+        font-size: 17px;
 }
 
 .play-again-msg {

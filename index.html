@@ -10,7 +10,7 @@
     <title>MineSweeper by Tom Bechar</title>
 </head>
 
-<body onload="initGame(4,2)">
+<body onload="initGame(4,2)" onkeyup="handleKey()">
     <div class="main-wrapper">
         <div class="hint-btn-wrapper">
             <h2>Hints</h2>
@@ -41,6 +41,7 @@
         </table>
     </div>
     <button onclick="soundToggle(this)" class="sound-btn">🔊</button>
+    <button onclick="instructionToggle()" class="instruction-btn">❔</button>
     <div class="timer">00:00:00</div>
     <div style="position: absolute; left:50%" class="best-scores-wrapper">
         <div class="best-scores" style="position: relative; left: -50%;">
@@ -57,6 +58,39 @@
             <div class="play-again-msg">
                 To play again click on the smiley or choose a game level.
             </div>
+        </div>
+    </div>
+    <div style="position: absolute; left: 50%;" class="instruction-modal-wrapper">
+        <div class="instruction-modal" style="position: relative; left: -50%;">
+            <button class="x-btn" onclick="instructionToggle()">X</button>
+            <p>
+                <h2>How To Play?</h2>
+                Welcome to MineSweeper!
+                <br>
+                To win the game you have to flag all the mines,
+                and reveal all the cells without mines.
+                <br>
+                To flag/unflag a cell - use right click.
+                <br>
+                To reveal a cell - use left click.
+                <br>
+                This is a special edition of the game:
+                <br>
+                1) There is 3 levels:
+                <br>
+                - 4X4 16 Cells.
+                <br>
+                - 8X8 64 Cells.
+                <br>
+                - 12X12 144 Cells.
+                <br>
+                2) You Have 3 lifes - so you can click 3 bombs before you lose.
+                <br>
+                3) You have 3 safe clicks - this will mark a cell for you that is safe to click.
+                <br>
+                4) You have 3 hints - when you click on a hint button ,
+                it lets you click on a cell you choose and shows you all the 8 cells around for 2 seconds
+            </p>
         </div>
     </div>
 
