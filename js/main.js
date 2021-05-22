@@ -270,17 +270,21 @@ function gameOver() {
 
 // BONUS - Hints
 function useHint(elBtn) {
+
     if (gIsFirstTurn) {
         openModal('Hints are not allowed at first click!', false, false)
         setTimeout(closeModal, 2000)
         return
     }
+
     if (elBtn.disabled) return;
+
     if (!gIsHintClick) {
         gIsHintClick = true;
     } else {
         return;
     }
+    
     elBtn.disabled = true;
     elBtn.style.backgroundColor = 'black';
 }
@@ -329,7 +333,7 @@ function expandShown(mat, cellI, cellJ) {
             if (j < 0 || j >= mat[i].length) continue;
             if (mat[i][j].isMine) continue;
             if (mat[i][j].isShown === true) continue;
-            if (mat[i][j].isShown === false) {
+            else {
                 mat[i][j].isShown = true;
                 gGame.shownCount++;
                 if (mat[i][j].isMarked) {

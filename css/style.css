@@ -87,16 +87,18 @@ button {
     background-color: yellow;
     border: black solid 2px;
     font-size: 18px;
+    border-radius: 7px;
 }
 
 .indicator{
-    width: 170px;
+    width: fit-content;
     padding: 5px;
     height: fit-content;
     border: black solid 1px;
     background-color:powderblue;
     transition: all 1s;
     margin: 3px;
+    border-radius: 7px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -112,6 +114,7 @@ button {
 }
 
 .btn {
+    height: 29px;
     background-color: turquoise;
 }
 
@@ -145,7 +148,7 @@ button:hover{
     height: fit-content;
     border: black solid 1px;
     opacity: 0.9;
-    /* top: 100px; */
+    border-radius: 7px;
 }
 
 .play-again-msg {
@@ -171,4 +174,5 @@ button:hover{
     width: fit-content;
     border: black solid 1px;
     background-color: rgb(62, 211, 196 , 0.9);
+    border-radius: 7px;
 }
