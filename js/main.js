@@ -3,12 +3,15 @@
 var gBoard;
 var gGame;
 var gLevel;
+var gIsFirstTurn;
+var gGameOver;
+
 var gEmptyCells;
+
 var gLives;
 var gSafeClicks;
 var gIsHintClick;
-var gIsFirstTurn;
-var gGameOver;
+
 
 function initGame(boardSize, minesAmount) {
     gLevel = {
@@ -26,15 +29,19 @@ function setGame() {
     gIsHintClick = false;
     gGameOver = false;
     gIsFirstTurn = true;
+
     gEmptyCells = [];
+
     gLives = 3;
     gSafeClicks = 3;
+
     gGame = {
         isOn: false,
         shownCount: 0,
         markedCount: 0,
         milisecsPassed: 0
     }
+
     closeModal();
     document.querySelector('.best-scores').style.display = 'none';
     document.querySelector('table').style.backgroundColor = '';
@@ -43,6 +50,7 @@ function setGame() {
     document.querySelector('.lives').innerText = gLives;
     document.querySelector('.safe-clicks').innerText = gSafeClicks;
     document.querySelector('#safe-clicks-indic').style.backgroundColor = '';
+    
     var elBtns = document.querySelectorAll('.hint-btn');
     for (var i = 0; i < elBtns.length; i++) {
         elBtns[i].disabled = false;
@@ -108,7 +116,7 @@ function cellClicked(elCell, row, col) {
     if (gBoard[row][col].isMarked) return;                 //if cell is marked , can not be clicked.
     if (gBoard[row][col].isShown) return;                  //if cell already revealed , can not be clicked.
 
-    if (gIsHintClick) {                                    //if current click is a hint.
+    if (gIsHintClick) {                                    //if current click is a hint click.
         revealNegs(row, col, gBoard, false);
         setTimeout(function () {
             revealNegs(row, col, gBoard, true);
